@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Falcon Eye satellite intelligence and environmental monitoring platform">
+  <meta name="theme-color" content="#06121d">
+  <title>Falcon Eye — Satellite Intelligence</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <script src="/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script type="module" src="/js/home.js"></script>
+</head>
+<body class="home-dark">
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <header class="orbit-nav" id="site-nav">
+    <a class="brand" href="/" aria-label="Falcon Eye home"><svg class="brand-mark" viewBox="0 0 56 30" aria-hidden="true"><path d="M27.8 13.5 4 2l7 10 11 5-13-1 8 8 12 2 1-12Zm.4 0L52 2l-7 10-11 5 13-1-8 8-12 2-1-12Z" fill="currentColor"/><path d="m25 20-7 6 10-1 1-4m2-1 7 6-10-1-1-4" fill="currentColor"/></svg><span>FALCON EYE</span></a>
+    <button class="home-menu-toggle" id="home-menu-toggle" aria-expanded="false" aria-controls="home-nav">Menu</button>
+    <nav id="home-nav" aria-label="Primary navigation">
+      <a class="active" href="#overview">Home</a>
+      <a href="/explorer.html">Explorer</a>
+      <a href="#capabilities">Analysis</a>
+      <a href="/login.html">History</a>
+      <a href="/login.html">Reports</a>
+      <a href="#capabilities">Datasets</a>
+    </nav>
+    <div class="nav-actions"><a class="nav-search" href="/explorer.html" aria-label="Search satellite imagery"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></a><a class="nav-signin" href="/login.html">Sign In</a><a class="nav-start" href="/explorer.html">Get Started</a></div>
+  </header>
+  <main>
+    <section id="overview" class="command-hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow glow-a" aria-hidden="true"></div><div class="hero-glow glow-b" aria-hidden="true"></div>
+      <div class="coordinate-chip" aria-label="Reference location: New Delhi, India, 28.6139 degrees north, 77.2090 degrees east"><span>REFERENCE POINT</span><b>28.6139° N</b><b>77.2090° E</b></div>
+      <div class="hero-command">
+        <p class="hero-kicker"><span></span> Satellite intelligence platform</p>
+        <h1 aria-label="Falcon Eye"><span class="hero-word">Falcon <span class="accent-word">Eye</span></span></h1>
+        <h2>Satellite Intelligence &amp;<br>Environmental Monitoring</h2>
+        <p class="lead">Monitor Earth’s changing surface through satellite imagery, geospatial analysis, and transparent remote sensing.</p>
+        <div class="actions"><a class="command-button primary" href="/explorer.html" data-magnetic>Launch Explorer <span aria-hidden="true">→</span></a><a class="command-button secondary" href="#capabilities"><span class="play-icon" aria-hidden="true">▶</span> View Capabilities</a></div>
+        <div class="platform-strip" id="platform" data-reveal aria-label="Platform capabilities"><div><span id="method-count">—</span><small>Analysis methods</small></div><div><span id="dataset-count">—</span><small>Satellite sources</small></div><div><span>GIS</span><small>Spatial analysis</small></div><div><span>Map</span><small>Interactive mapping</small></div></div>
+      </div>
+      <div class="earth-stage" id="earth-stage" aria-label="Animated Earth observation visualization using NASA Blue Marble imagery">
+        <div class="earth-fallback" aria-hidden="true"><div class="fallback-globe"></div><div class="fallback-orbit"></div><div class="fallback-satellite">◇</div></div>
+        <canvas id="earth-canvas" aria-hidden="true"></canvas>
+        <div class="scan-plane" aria-hidden="true"></div>
+        <div class="dataset-label dataset-sentinel"><span class="source-symbol">▧</span><b>Sentinel-2</b><span>Optical imagery</span></div>
+        <div class="dataset-label dataset-landsat"><span class="source-symbol">◈</span><b>Landsat</b><span>Earth observations</span></div>
+        <div class="dataset-label dataset-world"><span class="source-symbol">▦</span><b>Dynamic World</b><span>Land-cover dataset</span></div>
+        <div class="world-map-card" aria-hidden="true"><svg viewBox="0 0 180 90"><path d="m20 24 17-12 18 4 8 9-9 9-14-2-5 10-9-4-3-9-8 1Zm47 23 12 2 6 8-5 16-8 6-5-16-7-5Zm23-31 17-8 18 4 5 9-11 7-3 11-11 4-7-10-11-4Zm39 35 15-2 12 7-4 9-14 1-9-6ZM57 10l6 1m31 17 8 2"/></svg></div>
+        <div class="monitoring-card"><p>OBSERVATION LAYERS</p><div><i class="layer-dot green"></i><span>Vegetation</span></div><div><i class="layer-dot blue"></i><span>Water bodies</span></div><div><i class="layer-dot violet"></i><span>Land cover</span></div><div><i class="layer-dot amber"></i><span>Urban growth</span></div></div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="dark-section capability-section">
+      <div class="section-intro" data-reveal><div><p class="section-code">01 / OBSERVATION CAPABILITIES</p><h2>See the signals shaping our planet.</h2></div><p>Explore satellite-backed tools for land, water, vegetation, and cities. Availability and data sources are shown directly from the platform registry.</p></div>
+      <div id="capability-grid" class="command-card-grid featured-capabilities" aria-live="polite">
+        <article class="command-card skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></article>
+        <article class="command-card skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></article>
+        <article class="command-card skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></article>
+        <article class="command-card skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></article>
+      </div>
+      <div id="additional-capabilities" class="command-card-grid additional-capabilities" hidden></div>
+      <button id="show-all-capabilities" class="show-capabilities" type="button" hidden>View all capabilities <span aria-hidden="true">↓</span></button>
+    </section>
+
+    <section id="workflow" class="dark-section workflow-section">
+      <div class="section-intro" data-reveal><div><p class="section-code">02 / WORKFLOW</p><h2>From coordinates to defensible evidence.</h2></div><p>One focused sequence keeps area selection, imagery configuration, analysis, and methodology connected.</p></div>
+      <div class="workflow-track">
+        <article data-reveal data-tilt><span>01</span><div class="workflow-icon">⌖</div><h3>Define the AOI</h3><p>Draw, edit, validate, save, or export a polygon in the map workspace.</p></article>
+        <article data-reveal data-tilt><span>02</span><div class="workflow-icon">◫</div><h3>Configure imagery</h3><p>Select a compatible dataset, observation window, and supported parameters.</p></article>
+        <article data-reveal data-tilt><span>03</span><div class="workflow-icon">◎</div><h3>Process observations</h3><p>Track real job states while the centralized Earth Engine adapter runs.</p></article>
+        <article data-reveal data-tilt><span>04</span><div class="workflow-icon">▥</div><h3>Review evidence</h3><p>Inspect layers, measured statistics, charts, methodology, and limitations.</p></article>
+      </div>
+    </section>
+
+    <section class="dark-section explorer-callout" data-reveal>
+      <div class="callout-orbit" aria-hidden="true"></div>
+      <div><p class="section-code">PUBLIC GIS WORKSPACE</p><h2>Start with a place.</h2><p>Draw and export an Area of Interest immediately. Connect PostgreSQL/PostGIS and Earth Engine when you are ready to persist and process it.</p></div>
+      <a class="command-button primary" href="/explorer.html" data-magnetic>Open Satellite Explorer <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+  <footer class="command-footer">
+    <div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 56 30" aria-hidden="true"><path d="M27.8 13.5 4 2l7 10 11 5-13-1 8 8 12 2 1-12Zm.4 0L52 2l-7 10-11 5 13-1-8 8-12 2-1-12Z" fill="currentColor"/></svg><span>FALCON EYE</span></a><p>Satellite Intelligence &amp;<br>Environmental Monitoring Platform</p></div>
+    <div><b>Platform</b><a href="/explorer.html">Explorer</a><a href="#capabilities">Analysis</a><a href="/login.html">Reports</a></div>
+    <div><b>Technology</b><span>Google Earth Engine</span><span>Sentinel</span><span>Landsat</span><span>PostGIS</span></div>
+    <div class="footer-meta"><span>© 2026 Falcon Eye</span><span>Scientific outputs require configured services.</span><a href="https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/" target="_blank" rel="noopener">Visual imagery: NASA Earth Observatory / NASA-USGS</a></div>
+  </footer>
+</body>
+</html>

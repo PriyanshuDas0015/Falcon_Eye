@@ -1,0 +1,5 @@
+import {motion} from "./motion.js";
+
+export function animateHero(){const gsap=window.gsap;if(!gsap||motion.reduced)return;const timeline=gsap.timeline({defaults:{ease:"power3.out"}});timeline.from(".orbit-nav",{y:-20,opacity:0,duration:.55}).from(".hero-kicker",{y:16,opacity:0,duration:.4},"-=.2").from(".hero-word",{yPercent:110,opacity:0,duration:.75,stagger:.09},"-=.2").from(".hero-command .lead,.hero-command .actions,.hero-micro",{y:18,opacity:0,duration:.55,stagger:.1},"-=.35").from(".earth-stage",{scale:.94,opacity:0,duration:1},"-=.8");}
+
+export function enableMagneticButtons(){if(motion.reduced||!motion.canHover)return;document.querySelectorAll("[data-magnetic]").forEach(button=>{const move=event=>{const rect=button.getBoundingClientRect(),x=(event.clientX-rect.left-rect.width/2)*.1,y=(event.clientY-rect.top-rect.height/2)*.1;button.style.transform=`translate3d(${x}px,${y}px,0)`;};const reset=()=>{button.style.transform="";};button.addEventListener("pointermove",move);button.addEventListener("pointerleave",reset);});}

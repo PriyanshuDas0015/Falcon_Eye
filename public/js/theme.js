@@ -1,0 +1,1 @@
+export function ensureApplicationTheme(){if(document.querySelector("#falcon-app-theme"))return;const link=document.createElement("link");link.id="falcon-app-theme";link.rel="stylesheet";link.href="/css/app-theme.css";document.head.append(link);}

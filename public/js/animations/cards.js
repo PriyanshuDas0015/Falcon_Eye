@@ -1,0 +1,3 @@
+import {motion} from "./motion.js";
+
+export function enableCardTilt(selector="[data-tilt]"){if(motion.reduced||!motion.canHover)return;document.querySelectorAll(selector).forEach(card=>{card.addEventListener("pointermove",event=>{const rect=card.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width-.5,y=(event.clientY-rect.top)/rect.height-.5;card.style.transform=`perspective(900px) rotateX(${-y*4}deg) rotateY(${x*6}deg) translateY(-5px)`;card.style.setProperty("--glow-x",`${(x+.5)*100}%`);card.style.setProperty("--glow-y",`${(y+.5)*100}%`);});card.addEventListener("pointerleave",()=>{card.style.transform="";});});}
