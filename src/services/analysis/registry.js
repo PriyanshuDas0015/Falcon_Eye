@@ -1,7 +1,7 @@
 const ee = ["vegetation","crop-health","water","land-use"];
 const deferred="Processing workflow is planned but not implemented; no result will be generated.";
 export const analysisTypes = [
- {id:"vegetation",name:"Vegetation Analysis",category:"Vegetation & Agriculture",description:"NDVI-based vegetation-vigor summary.",status:"REQUIRES_EARTH_ENGINE",supportedDatasets:["sentinel-2","landsat-8","landsat-9"],requiresComparisonPeriod:false,version:"vegetation-v1"},
+ {id:"vegetation",name:"Vegetation Analysis",category:"Vegetation & Agriculture",description:"NDVI-based vegetation-vigor summary.",status:"REQUIRES_EARTH_ENGINE",supportedDatasets:["sentinel-2","landsat-8","landsat-9"],requiresComparisonPeriod:true,version:"vegetation-v1"},
  {id:"crop-health",name:"Crop Vigor",category:"Vegetation & Agriculture",description:"NDVI vigor indicators; not a crop-yield or disease diagnosis.",status:"REQUIRES_EARTH_ENGINE",supportedDatasets:["sentinel-2"],requiresComparisonPeriod:false,version:"crop-health-v1"},
  {id:"deforestation",name:"Deforestation",category:"Vegetation & Agriculture",description:`${deferred} A validated temporal tree-cover method is required.`,status:"PLANNED",supportedDatasets:["sentinel-2","dynamic-world"],requiresComparisonPeriod:true,version:"deforestation-v1"},
  {id:"water",name:"Water Monitoring",category:"Water & Disaster",description:"Spectral water index and estimated water extent.",status:"REQUIRES_EARTH_ENGINE",supportedDatasets:["sentinel-2","landsat-8","landsat-9"],requiresComparisonPeriod:false,version:"water-v1"},

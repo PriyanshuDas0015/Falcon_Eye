@@ -31,14 +31,22 @@ export function validateAnalysisInput(body = {}) {
   const type = getAnalysisType(body.analysisType);
   if (!type) details.analysisType = "Select a supported analysis method.";
   else if (type.status === "PLANNED") details.analysisType = type.description;
-  if (!validDate(body.startDate) || !validDate(body.endDate) || body.startDate >= body.endDate) {
+  const today = new Date().toISOString().slice(0, 10),validPeriod1=validDate(body.startDate)&&validDate(body.endDate)&&body.startDate<body.endDate;
+  if (!validPeriod1) {
     details.dateRange = "Start and end dates must be valid, and the start must be before the end.";
+  } else if (type?.id === "vegetation" && (body.startDate > today || body.endDate > today)) {
+    details.dateRange = "Vegetation analysis dates cannot be in the future.";
   }
-  if (type?.requiresComparisonPeriod && (!validDate(body.comparisonStartDate) || !validDate(body.comparisonEndDate) || body.comparisonStartDate >= body.comparisonEndDate)) {
-    details.comparisonDateRange = "This method requires a valid comparison period with its start before its end.";
+  const requiresComparison=Boolean(type?.requiresComparisonPeriod||type?.id==="vegetation");
+  if (requiresComparison) {
+    const validPeriod2=validDate(body.comparisonStartDate)&&validDate(body.comparisonEndDate)&&body.comparisonStartDate<body.comparisonEndDate;
+    if (!validPeriod2) details.comparisonDateRange = "This method requires a valid comparison period with its start before its end.";
+    else if(type.id==="vegetation"&&(body.comparisonStartDate>today||body.comparisonEndDate>today))details.comparisonDateRange="Vegetation comparison dates cannot be in the future.";
+    else if(type.id==="vegetation"&&body.comparisonStartDate<=body.endDate)details.comparisonDateRange="The comparison period must start after the baseline period ends.";
   }
   const dataset = datasets[body.dataset];
   if (!dataset || (type && !dataset.analyses.includes(type.id))) details.dataset = "The selected dataset does not support this method.";
+  if(type?.id==="vegetation"&&body.dataset!=="sentinel-2")details.dataset="Two-period vegetation comparison requires Sentinel-2.";
   if (body.savedAreaId != null && !validUuid(body.savedAreaId)) details.savedAreaId = "Saved area ID is invalid.";
   if (body.parameters != null && (typeof body.parameters !== "object" || Array.isArray(body.parameters))) details.parameters = "Parameters must be an object.";
   return { type, dataset, details };

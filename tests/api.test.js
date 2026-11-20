@@ -11,6 +11,17 @@ test("health endpoint reports service readiness",async()=>{
  assert.ok("database" in response.body&&"postgis" in response.body&&"earthEngine" in response.body);
 });
 
+test("Earth Engine status endpoint uses the standard safe response structure",async()=>{
+ const response=await request(app).get("/api/earth-engine/status");
+ assert.equal(response.status,200);
+ assert.equal(response.body.success,true);
+ const status=response.body.data.earthEngine;
+ assert.ok(["unavailable","configured","initialization_error"].includes(status.status));
+ assert.equal(typeof status.configured,"boolean");assert.equal(typeof status.initialized,"boolean");
+ assert.deepEqual(response.body.earthEngine,status);
+ for(const sensitive of ["private_key","GOOGLE_SERVICE_ACCOUNT_EMAIL","GOOGLE_APPLICATION_CREDENTIALS","token"])assert.equal(JSON.stringify(response.body).toLowerCase().includes(sensitive.toLowerCase()),false);
+});
+
 test("analysis registry is served by the API",async()=>{
  const response=await request(app).get("/api/analysis/types");
  assert.equal(response.status,200);
